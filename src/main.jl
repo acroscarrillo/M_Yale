@@ -20,7 +20,7 @@ function O_basis_spin_half(N_spins)
         for m=2:N_spins
             element = kron(element,σ_vec[indx_array[m]+1])
         end
-        O_temp[:,:,n] = element
+        O_temp[:,:,n] = element./(2^(N_spins/2))
     end
     return O_temp
 end
@@ -43,9 +43,11 @@ function t_tensor(O_basis)
     N = size(O_basis)[3]
     t_temp = zeros(N,N)
     for λ=1:N
-        for μ=1:N
+        for μ=1:λ
             C_temp = C_λμ(O_basis[:,:,λ],O_basis[:,:,μ])
-            t_temp[λ,μ] = real.(  tr(C_temp*C_temp') )
+            val = real.(  tr(C_temp*C_temp') )
+            t_temp[λ,μ] = val
+            t_temp[μ,λ] = val
         end
     end
     return t_temp
