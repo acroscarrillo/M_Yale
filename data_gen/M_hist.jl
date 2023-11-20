@@ -4,7 +4,7 @@ using ProgressBars
 using DataFrames
 using CSV
 
-nsmax =4
+nsmax = 4
 samples = 1000
 
 O_basis = O_basis_spin_half(n_spins)
@@ -24,6 +24,3 @@ end
 hist_df2 = DataFrame(hist_m,["1spin","2spin","3spin","4spin","5spin"])
 # hist_df = DataFrame(hist_m,["1spin","2spin","3spin"])
 CSV.write("data/M_spin_hist2.csv",hist_df2)
-
-
-

@@ -57,3 +57,12 @@ function M(ρ,O_basis)
     ρ_2_temp =  norm.(ρ_vec(ρ, O_basis )).^2
     return √( ρ_2_temp'*t_tensor(O_basis)*ρ_2_temp )
 end
+
+function partial_trace(ρ,trace_mask)
+
+end
+
+function entanglement_entropy(ψ,trace_mask)
+    if tr(ψ*ψ')<1-1e-5
+        
+end
