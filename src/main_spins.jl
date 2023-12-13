@@ -36,19 +36,6 @@ function ρ_vec(ρ, O_basis)
     end
     return ρ_temp
 end
-function ρ_vec_einsum(ρ, O_basis)
-    @einsum ρ_temp[μ] :=  ρ[j,k]*O_basis[k,j,μ]
-    return ρ_temp
-end
-
-function ρ_mat(ρ, O_basis)
-    N = Int(log2( size(O_basis)[3]))
-    ρ_temp = ComplexF64.(zeros(N,N))
-    for n=1:size(O_basis)[3]
-        ρ_temp += ρ[n]*O_basis[:,:,n]
-    end
-    return ρ_temp
-end
 
 function C_λμ(O_λ,O_μ)
     return O_λ*O_μ - O_μ*O_λ
@@ -145,7 +132,7 @@ function entanglement_entropy(ρ,trace_mask)
     lambs, _ = eigen(rho_B)
     entropy = 0
     for lamb in lambs
-        if lamb <= 0
+        if lamb == 0
             entropy += 0
         else
             entropy += -lamb * log2(lamb)

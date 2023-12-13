@@ -7,7 +7,6 @@ using CSV
 nsmax = 4
 samples = 1000
 
-O_basis = O_basis_spin_half(n_spins)
 hist_m  = zeros(samples,nsmax)
 
 for n_spins = 1:nsmax
@@ -21,6 +20,5 @@ for n_spins = 1:nsmax
     end
 end
 
-hist_df2 = DataFrame(hist_m,["1spin","2spin","3spin","4spin","5spin"])
-# hist_df = DataFrame(hist_m,["1spin","2spin","3spin"])
-CSV.write("data/M_spin_hist2.csv",hist_df2)
+hist_df = DataFrame(hist_m,["1spin","2spin","3spin","4spin"])
+CSV.write("data/M_spin_hist.csv",hist_df)
