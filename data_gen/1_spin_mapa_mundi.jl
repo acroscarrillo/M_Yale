@@ -5,9 +5,6 @@ using DataFrames
 using CSV
 using LaTeXStrings
 
-#test 
-
-#2test
 
 O_basis = O_basis_spin_half(1)
 
