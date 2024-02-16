@@ -18,7 +18,7 @@ function M_one_spin(θ,ϕ)
 end
 
 θ_array = Vector( range(0,1, length=999) )
-ϕ_array = Vector( range(0,1, length=1000) )
+ϕ_array = Vector( range(0,1, length=1001) )
 
 M_max = 0
 max_θ, max_ϕ = 0, 0
